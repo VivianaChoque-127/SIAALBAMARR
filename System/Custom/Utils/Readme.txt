@@ -1,0 +1,1 @@
+En esta carpeta guardaremos los recursos fuera de la plantilla de los cuales haremos uso.

@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_orden_servicio" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4c71d9a-dfcb-43b5-ac7f-a364d26578cc">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+	cli.direccion_cliente AS direccion_cliente,
+	cli.nombre_cliente AS nombre_cliente,
+	cli.correo_cliente AS correo_cliente,
+    cli.telefono_cliente AS telefo_cliente,
+    cli. nit_ci_cliente AS nit_cliente,
+    cli.nombre_contacto AS nombre_contacto,
+    cli.telefono_contacto AS telefono_contacto,
+    cli.correo_contacto AS correo_contacto,
+	medio.id AS id,
+	medio.serie_numero AS serie,
+	mar.nombre_marca,
+	mo.nombre_modelo AS nombre_modelo,
+	disp.descripcion AS disp_descripcion,
+	cap.descripcion AS capacidad,
+	medio.abierto,
+	medio.donde,
+	medio.p_n,
+	medio.diagnostico_cliente,
+	medio.diagnostico_inicial,
+	DATE(medio.fecha) AS fecha_ingreso,
+    	medio.orden AS nro_orden,
+	usu.nombre_usuario
+FROM medio_almacenamiento medio, marca mar, tipo_dispositivo disp, capacidad cap, modelo mo, cliente cli, usuario usu
+WHERE medio.marca = mar.id
+AND medio.tipo = disp.id
+AND medio.capacidad = cap.id
+AND medio.modelo = mo.id
+AND medio.id_cliente = cli.id
+AND medio.estado = 1
+AND medio.orden = 7
+AND usu.id_usuario = 1]]>
+	</queryString>
+	<field name="direccion_cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo_cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefo_cliente" class="java.lang.String"/>
+	<field name="nit_cliente" class="java.lang.String"/>
+	<field name="nombre_contacto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono_contacto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo_contacto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="serie" class="java.lang.String"/>
+	<field name="nombre_marca" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_modelo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="disp_descripcion" class="java.lang.String"/>
+	<field name="capacidad" class="java.lang.String"/>
+	<field name="abierto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="donde" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="p_n" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diagnostico_cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diagnostico_inicial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_ingreso" class="java.sql.Date"/>
+	<field name="nro_orden" class="java.lang.Long"/>
+	<field name="nombre_usuario" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="352" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="86" width="58" height="15" forecolor="#0066CC" uuid="1c7e7bbe-4b5b-4bee-96ac-3cdeebf4ef80"/>
+				<textElement>
+					<font fontName="Arial Black" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="86" width="151" height="15" forecolor="#0066CC" uuid="a7b7d036-41e8-4994-a311-7be41900f65b"/>
+				<textElement>
+					<font fontName="Arial Black" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PREPARADO POR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="101" width="58" height="12" uuid="21d97e36-eecf-49ea-8f38-a9305be415bd"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="113" width="58" height="12" uuid="2e3582dc-9d04-48c3-96fd-4ca0ab1d7f5c"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Contacto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="125" width="58" height="12" uuid="5cc7fbcd-ac58-4f5e-b8f1-67c44eac8ba7"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Ciudad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="141" width="262" height="15" forecolor="#0066CC" uuid="10535684-bc56-47bf-a6e9-1161f393041b"/>
+				<textElement>
+					<font fontName="Arial Black" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS MEDIO DE ALMACENAMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="113" width="52" height="12" uuid="eb09f090-50ae-4a08-8c47-4c18ecb07e87"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Teléfono:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="125" width="52" height="12" uuid="0f982e32-de28-441a-bfe8-729bb3c35d79"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Correo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="46" width="202" height="12" uuid="4f081448-08cb-4b6e-a341-cdb82baf6a65"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Calle Mercado 1362 Galeria Paladium1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="57" width="202" height="12" uuid="42ed2bf4-994e-49e0-b084-661d9a505a13"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[La Paz - Bolivia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="68" width="214" height="12" uuid="8adadb6c-7f20-4ea1-af0d-8db92fbdf667"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Teléfonos: 2901884 - 75844934 - 77760551]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="46" width="68" height="12" uuid="e5dbc9ef-d5b5-4aa6-94f1-11dc51b914be"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="58" width="68" height="15" uuid="bffdc189-4dec-4313-96ce-2c23e0f466ed"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="58" width="99" height="15" uuid="cf3e5844-4988-4731-9e85-262c471f4484"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[8 de diciembre del 2020]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="85" width="572" height="1" forecolor="#0066CC" uuid="eda72ccb-f99d-4a85-8552-28697e05fae4"/>
+			</line>
+			<staticText>
+				<reportElement x="-1" y="25" width="572" height="20" forecolor="#0066CC" uuid="2e9c43de-44a4-4ca8-a0a2-6ff0fe7fd8d7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Orden de Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="10" width="94" height="15" forecolor="#0066CC" uuid="d7d0eb5a-47db-479f-845a-917e498e3495"/>
+				<textElement>
+					<font fontName="Arial Black" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Onedata Lab]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="10" width="262" height="15" forecolor="#0066CC" uuid="b372af18-683f-4b40-bb55-69f6076be81a"/>
+				<textElement>
+					<font fontName="Arial Black" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERVICIO DE RECUPERACIÓN DE DATOS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="157" width="572" height="1" uuid="df13eefd-a0e6-45ef-b408-df1d5c6ca6ea"/>
+			</line>
+			<line>
+				<reportElement x="1" y="158" width="1" height="30" uuid="8840cca7-881f-4e9b-b809-c96ca12f84f4"/>
+			</line>
+			<line>
+				<reportElement x="572" y="158" width="1" height="30" uuid="151ade64-a094-46b5-a8aa-64422c6fda0b"/>
+			</line>
+			<line>
+				<reportElement x="1" y="171" width="571" height="1" uuid="196083a4-bef7-4bdf-a371-b7817ec5397f"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="158" width="86" height="12" uuid="109fd0d4-aae1-44f8-b86a-203069a17272"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="158" width="94" height="12" uuid="e101cb75-b09b-4be7-984e-e8374bcaf406"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="158" width="97" height="12" uuid="582af2e0-0fd4-499a-9d35-79e07078a7d0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Serie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="157" width="101" height="12" uuid="42199caf-8f53-4b9e-bcb0-57e81471785e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Capacidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="157" width="99" height="12" uuid="6fd9df67-2cdd-4ac5-b403-0477a8b1b2ef"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="158" width="96" height="12" uuid="859f171b-fe33-4040-af53-5efcfc4fc98b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N/P]]></text>
+			</staticText>
+			<line>
+				<reportElement x="85" y="158" width="1" height="30" uuid="19f895d4-5807-4f9b-adf8-1870aeef49c6"/>
+			</line>
+			<line>
+				<reportElement x="179" y="158" width="1" height="30" uuid="86688a2b-ca44-4f01-91f6-1d5cca027c83"/>
+			</line>
+			<line>
+				<reportElement x="276" y="158" width="1" height="30" uuid="121951ff-8869-4e1e-8e09-94ddb7371c5d"/>
+			</line>
+			<line>
+				<reportElement x="377" y="158" width="1" height="30" uuid="1b3d94d7-2653-4df9-abf5-2a417a2e4394"/>
+			</line>
+			<line>
+				<reportElement x="476" y="157" width="1" height="30" uuid="0f750ffe-2cc3-4c1b-b37f-5859389ae4ca"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="195" width="47" height="12" uuid="cd7a3c95-7be6-4897-bbf5-3ffad1c7f4c3"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abierto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="207" width="123" height="12" uuid="f908aa1b-ffa5-4a49-95bc-7071e2074188"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnostico del Cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="219" width="123" height="12" uuid="ab87121f-2a70-4ac3-94bd-bfcb5a850e98"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnostico Inicial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="195" width="44" height="12" uuid="8033e79c-19d5-43c6-8b74-be0c5735258b"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Donde:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="258" width="571" height="1" forecolor="#0066CC" uuid="770ed4ed-2bf0-4751-8fd0-8eb04f1bb0c3"/>
+			</line>
+			<line>
+				<reportElement x="285" y="228" width="1" height="46" forecolor="#0066CC" uuid="5ba33e62-dc20-4bc3-ad35-92b1e3c3c0ce"/>
+			</line>
+			<staticText>
+				<reportElement x="77" y="259" width="123" height="13" uuid="7187f690-259b-4e05-acb7-466cb1762061"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Autoriza cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="259" width="117" height="13" uuid="0ca89007-dc67-44b4-9dc7-28d9d30cdb1f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Firma OneData]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="286" width="569" height="9" uuid="9dd6d63f-a1af-4b12-a692-b729e18df419"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-El costo del diagnóstico debe ser cancelado por anticipado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="294" width="569" height="9" uuid="a8cfeed3-17c3-4367-8c82-1eff3403706d"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-Los medios solo serán devueltos cuando se haya cancelado la totalidad del trabajo realizado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="302" width="569" height="9" uuid="9457bf29-e877-4e03-894f-a0d5f474d2c7"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-Todo trabajo realizado goza de absoluta confidencialidad para el cliente y  su información.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="310" width="569" height="9" uuid="aff9b9e7-3d19-4079-be73-0c0084c276ac"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-El cliente autoriza el diagnóstico para la revisión interna del medio de almacenamiento si fuera necesario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="318" width="569" height="17" uuid="b317d549-07f9-4e81-aa3e-ad8f4cba9394"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-La información solo podrá ser almacenada durante 15 dias contados a partir de su entrega, Onedata Lab eliminará dicha información de sus servidores pasado este tiempo o cuando el cliente así lo disponga antes de este período de tiempo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="335" width="569" height="17" uuid="342297cb-6c66-47f2-a17e-6bf8f9b028c8"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-Luego de 30 días de no ser retirado los medios, estos ingresaran a reciclaje sin reclamo alguno, este tiempo se calcula desde la firma de la presente orden de servicio. Se excepcionan de este punto a servicios con proceso demorados o en espera de donantes]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="101" width="152" height="12" uuid="3526b289-0460-477d-9d9d-502ca046b329"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="113" width="111" height="12" uuid="798eb1d0-fe9b-4104-bfe3-262b34d203ac"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono_contacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="125" width="114" height="12" uuid="bb12fd7e-334e-406c-96ca-ca6b7aaf6ff1"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{correo_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="113" width="150" height="12" uuid="75052c7d-fbf2-469b-89fe-7e3c319497c0"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_contacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="125" width="150" height="12" uuid="a3765215-ff58-4423-82c7-0c707e8072a0"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="46" width="100" height="12" uuid="3326a6bb-1d9c-4f12-9e95-3c4169f3202f"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nro_orden}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="195" width="130" height="12" uuid="137e1280-f17e-4784-ab17-f459206d302f"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{abierto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="195" width="100" height="12" uuid="1960e38f-0387-4cda-8105-12621b382e11"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{donde}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="207" width="202" height="12" uuid="4a09cc60-d957-4114-9b26-dd0c939f79f7"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnostico_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="219" width="202" height="12" uuid="7af62c81-4849-40da-b4ae-b5e284eaccf8"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnostico_inicial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="172" width="82" height="15" uuid="39f781d5-513a-4ebc-a25b-0a83988ad649"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="172" width="93" height="15" uuid="54186fb5-91f0-49d1-b164-e6a5f5623f7b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_modelo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="172" width="96" height="15" uuid="10967e5f-516c-4204-943a-25288816004c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{serie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="278" y="172" width="98" height="15" uuid="05131a72-3754-4d23-8dfd-8e91baf55644"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capacidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="172" width="97" height="15" uuid="781cc991-06dd-46c8-8acf-1203c2c2a8ab"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{disp_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="478" y="171" width="94" height="16" uuid="19dbc6ad-f26c-4532-8695-4a0fda2a747b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{p_n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="272" width="117" height="12" uuid="086e01eb-ccfb-47e9-b934-dd593cef3f4b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="272" width="122" height="12" uuid="b5966c31-e78e-49fd-bacc-f8e0a1240b40"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="351">
+			<staticText>
+				<reportElement x="3" y="88" width="58" height="15" forecolor="#0066CC" uuid="046f1a82-ee0b-41e7-8fd8-ae9f647e0df5"/>
+				<textElement>
+					<font fontName="Arial Black" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="88" width="151" height="15" forecolor="#0066CC" uuid="3796ca1d-06b5-474f-a5cc-924eb0cb593e"/>
+				<textElement>
+					<font fontName="Arial Black" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PREPARADO POR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="103" width="58" height="12" uuid="017af092-be38-48b3-b708-efd00d52c30c"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="115" width="58" height="12" uuid="4150bc16-609a-4909-83e3-fb33bde721e6"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Contacto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="127" width="58" height="12" uuid="e1498e7b-3ad3-44a8-a240-1e74fca04a62"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Ciudad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="141" width="262" height="15" forecolor="#0066CC" uuid="9fcf2dee-7885-4ee8-bda0-b3efa4b1a5af"/>
+				<textElement>
+					<font fontName="Arial Black" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS MEDIO DE ALMACENAMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="115" width="52" height="12" uuid="055a79e1-73f4-444f-909c-c056f8b76f1b"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Teléfono:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="127" width="52" height="12" uuid="3eaa0995-8ab2-4a64-b2ab-fae42c198df4"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Correo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="48" width="202" height="12" uuid="f1b23a35-5efb-459e-aca3-ad77058cff33"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Calle Mercado 1362 Galeria Paladium1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="59" width="202" height="12" uuid="bb63145e-b2d9-4d39-8af8-140cac6c83e9"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[La Paz - Bolivia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="70" width="214" height="12" uuid="490ba3a5-d459-4dd9-b27a-8520736ea984"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Teléfonos: 2901884 - 75844934 - 77760551]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="48" width="68" height="12" uuid="90cdc69d-e8e6-4c23-9b22-f1ae9f9438b1"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="60" width="68" height="12" uuid="8d36cd95-2f94-447e-803f-a1884e2129ef"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="60" width="99" height="12" uuid="6ed91e40-605b-412e-ae62-66263aa4cfc9"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[8 de diciembre del 2020]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="87" width="572" height="1" forecolor="#0066CC" uuid="924df496-beba-48b4-8e76-38d780f4627a"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="25" width="572" height="20" forecolor="#0066CC" uuid="6f43d108-bcc0-445b-96e8-37825fa4298e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Orden de Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="10" width="94" height="15" forecolor="#0066CC" uuid="f82c949a-9d0d-4e9d-9fa9-2250aba106cd"/>
+				<textElement>
+					<font fontName="Arial Black" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Onedata Lab]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="311" y="10" width="262" height="15" forecolor="#0066CC" uuid="55d77e7c-e625-4f44-bf02-68eaf894c3b2"/>
+				<textElement>
+					<font fontName="Arial Black" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERVICIO DE RECUPERACIÓN DE DATOS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="157" width="572" height="1" uuid="357f3c46-3764-45ab-bdb8-408291a8f213"/>
+			</line>
+			<line>
+				<reportElement x="2" y="158" width="1" height="30" uuid="60e60cfc-1232-47d7-ab54-b46c83614e95"/>
+			</line>
+			<line>
+				<reportElement x="572" y="157" width="1" height="30" uuid="1643c856-bd58-44a4-8afc-5c1f7980e68d"/>
+			</line>
+			<line>
+				<reportElement x="2" y="169" width="571" height="1" uuid="8421aee0-9dd8-488c-86f4-405610bcd4fc"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="158" width="86" height="12" uuid="20e4a393-cad9-4908-a090-939cd396ace9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="158" width="94" height="12" uuid="04196a69-7596-48b7-a42c-e5b0faf38186"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="158" width="97" height="12" uuid="bb68f7a2-74ee-44c4-a067-96be024452d2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Serie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="277" y="157" width="101" height="12" uuid="71c08bc6-f35e-4458-8755-f5c38682b88b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Capacidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="157" width="99" height="12" uuid="a73b7551-d0f6-4e35-afeb-11d89a037084"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="158" width="94" height="12" uuid="beba6e84-26b9-4939-8751-8b94db441da8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N/P]]></text>
+			</staticText>
+			<line>
+				<reportElement x="86" y="158" width="1" height="30" uuid="eef3c744-9ec5-47ae-a6d4-a9de8dbf2acc"/>
+			</line>
+			<line>
+				<reportElement x="180" y="158" width="1" height="30" uuid="8ff98be1-5cec-4512-97a2-063dfbcb2c51"/>
+			</line>
+			<line>
+				<reportElement x="277" y="158" width="1" height="30" uuid="919728a8-6b4d-4b85-a965-1a3c1ef94961"/>
+			</line>
+			<line>
+				<reportElement x="378" y="158" width="1" height="30" uuid="377dabc3-72fa-437f-90a5-759dcbc57012"/>
+			</line>
+			<line>
+				<reportElement x="477" y="157" width="1" height="30" uuid="1c2d9ffe-24f9-4afe-8e8b-ac77d878ae87"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="195" width="47" height="12" uuid="d179da8c-6216-49dc-8203-8ef629b3155f"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abierto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="207" width="123" height="12" uuid="f95455bb-06c5-4384-9a12-70eeb7b4862e"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnostico del Cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="219" width="124" height="12" uuid="e57fd14e-7364-44c0-ad6b-5a9314efaf4d"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnostico Inicial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="195" width="44" height="12" uuid="609349a7-9c02-4e00-9b6c-2741411b4149"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Donde:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="260" width="571" height="1" forecolor="#0066CC" uuid="7ee3ec43-55f4-43de-8c20-c8f7f5e1c1c9"/>
+			</line>
+			<line>
+				<reportElement x="286" y="230" width="1" height="46" forecolor="#0066CC" uuid="4ac0d464-78aa-4ec1-b7a5-8f750d1a2d73"/>
+			</line>
+			<staticText>
+				<reportElement x="78" y="261" width="123" height="13" uuid="d0ba6be1-5783-43e3-87d2-13fa40363b3a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Autoriza cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="261" width="117" height="13" uuid="c0896bb3-1c46-4fbd-9047-5cfd9fbe2914"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Firma OneData]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="286" width="569" height="9" uuid="c88c7e4f-4c30-4008-b1f5-1280c8b0555a"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-El costo del diagnóstico debe ser cancelado por anticipado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="294" width="569" height="9" uuid="7a93d688-3e5b-4bdd-9d0c-20dee78dca6c"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-Los medios solo serán devueltos cuando se haya cancelado la totalidad del trabajo realizado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="302" width="569" height="9" uuid="83a61cb1-082f-4be5-b068-dff7b704ebbf"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-Todo trabajo realizado goza de absoluta confidencialidad para el cliente y  su información.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="310" width="569" height="9" uuid="43c23008-b97f-4086-b18d-17214b4d7e64"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-El cliente autoriza el diagnóstico para la revisión interna del medio de almacenamiento si fuera necesario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="318" width="569" height="17" uuid="5e070510-5e1f-4808-bac7-4c1f2d2bc583"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-La información solo podrá ser almacenada durante 15 dias contados a partir de su entrega, Onedata Lab eliminará dicha información de sus servidores pasado este tiempo o cuando el cliente así lo disponga antes de este período de tiempo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="334" width="569" height="17" uuid="d8f7a393-cda3-47a6-8770-587cd80275cc"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-Luego de 30 días de no ser retirado los medios, estos ingresaran a reciclaje sin reclamo alguno, este tiempo se calcula desde la firma de la presente orden de servicio. Se excepcionan de este punto a servicios con proceso demorados o en espera de donantes]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="61" y="103" width="150" height="12" uuid="dc7c063d-3a1e-494f-9e2a-ca329cb436e8"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="115" width="150" height="12" uuid="de2013a6-21d3-4cd7-b7d2-6b0fc1427984"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_contacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="127" width="150" height="12" uuid="ae06d648-db6f-4b59-871e-8df69950e488"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="127" width="131" height="12" uuid="4268f0fc-aafa-416f-a9c8-d7af2cdaab9c"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{correo_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="115" width="131" height="12" uuid="0de5e3e0-3882-43ca-9d28-9cee33f91d7b"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono_contacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="48" width="100" height="12" uuid="89f49e1f-8484-4621-8773-2d878d15b1de"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nro_orden}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="195" width="102" height="12" uuid="ee6153ab-5329-48f9-b54b-d36755b3b36f"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{abierto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="207" width="200" height="12" uuid="6d16ed96-5a7d-41e2-a569-115f91681145"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnostico_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="219" width="200" height="12" uuid="15f85ffe-48d5-4ed7-8496-f7a452b09ba7"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnostico_inicial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="195" width="102" height="12" uuid="27b4db6c-f01f-451b-8121-1ecbfc598d2f"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{donde}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="170" width="84" height="17" uuid="fe1442e7-c17b-4628-b0db-cbf1c04abd50"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="170" width="92" height="19" uuid="821f5cda-8be4-4dc0-ad31-4e02c6448782"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_modelo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="181" y="170" width="97" height="18" uuid="85a80975-db19-4eb4-9d10-baa78781356a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{serie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="278" y="170" width="101" height="17" uuid="d79e9a02-d39c-43cc-af73-4c0673c6fd90"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capacidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="170" width="98" height="17" uuid="fa0af0e6-3bec-4010-9ed6-c1e8c77c9f95"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{disp_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="478" y="170" width="93" height="17" uuid="e785acf9-e927-4360-aba0-60dc8dd82f20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{p_n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="274" width="122" height="12" uuid="b20d04d6-a4cc-46f4-ba70-dc653bd8d03a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="274" width="117" height="12" uuid="92d9bb65-18aa-4107-a889-7f91e366b483"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

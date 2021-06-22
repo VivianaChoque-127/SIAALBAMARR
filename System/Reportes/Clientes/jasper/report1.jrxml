@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fa24d7d4-4c97-4c50-bef0-271b14b5dc11">
+	<property name="ireport.zoom" value="1.464100000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+	cli.direccion_cliente AS direccion_cliente,
+	cli.nombre_cliente AS nombre_cliente,
+	cli.correo_cliente AS correo_cliente,
+    cli.telefono_cliente AS telefo_cliente,
+    cli. nit_ci_cliente AS nit_cliente,
+    cli.nombre_contacto AS nombre_contacto,
+    cli.telefono_contacto AS telefono_contacto,
+    cli.correo_contacto AS correo_contacto,
+	medio.id AS id,
+	medio.serie_numero AS serie,
+	mar.nombre_marca,
+	mo.nombre_modelo AS nombre_modelo,
+	disp.descripcion AS disp_descripcion,
+	cap.descripcion AS capacidad,
+	medio.abierto,
+	medio.donde,
+	medio.p_n,
+	medio.diagnostico_cliente,
+	medio.diagnostico_inicial,
+	DATE(medio.fecha) AS fecha_ingreso,
+    	medio.orden AS nro_orden,
+	usu.nombre_usuario
+FROM medio_almacenamiento medio, marca mar, tipo_dispositivo disp, capacidad cap, modelo mo, cliente cli, usuario usu
+WHERE medio.marca = mar.id
+AND medio.tipo = disp.id
+AND medio.capacidad = cap.id
+AND medio.modelo = mo.id
+AND medio.id_cliente = cli.id
+AND medio.estado = 1
+AND medio.orden = 7
+AND usu.id_usuario = 1]]>
+	</queryString>
+	<field name="direccion_cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo_cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefo_cliente" class="java.lang.String"/>
+	<field name="nit_cliente" class="java.lang.String"/>
+	<field name="nombre_contacto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono_contacto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo_contacto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="serie" class="java.lang.String"/>
+	<field name="nombre_marca" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_modelo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="disp_descripcion" class="java.lang.String"/>
+	<field name="capacidad" class="java.lang.String"/>
+	<field name="abierto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="donde" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="p_n" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diagnostico_cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diagnostico_inicial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_ingreso" class="java.sql.Date"/>
+	<field name="nro_orden" class="java.lang.Long"/>
+	<field name="nombre_usuario" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="85" y="0" width="94" height="15" forecolor="#0066CC" uuid="2a719ce0-1f47-42cb-aa3a-3657e8238c2a"/>
+				<textElement>
+					<font fontName="Arial Black" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Onedata Lab]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="0" width="262" height="15" forecolor="#0066CC" uuid="dfd64bce-932c-4cee-ba30-3573ddf0f904"/>
+				<textElement>
+					<font fontName="Arial Black" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERVICIO DE RECUPERACIÓN DE DATOS]]></text>
+			</staticText>
+		</band>
+		<band height="189">
+			<staticText>
+				<reportElement x="11" y="41" width="202" height="12" uuid="6bd1260d-f13b-4fcb-9bb9-8d9d454b71a6"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Calle Mercado 1362 Galeria Paladium1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="52" width="202" height="12" uuid="68844dc1-1600-4b2a-86d2-64e19bf6f74a"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[La Paz - Bolivia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="63" width="214" height="12" uuid="5d8417cf-b282-46ce-8bf0-3bc06b1cb448"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Teléfonos: 2901884 - 75844934 - 77760551]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="20" width="572" height="20" forecolor="#0066CC" uuid="008d2ab5-f852-4d3e-81dd-79b3cb8e93ee"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Orden de Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="5" width="94" height="15" forecolor="#0066CC" uuid="27340273-c971-42f7-981d-33b159f1eae0"/>
+				<textElement>
+					<font fontName="Arial Black" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Onedata Lab]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="5" width="262" height="15" forecolor="#0066CC" uuid="b067a08e-a096-48b7-88a2-dc0c78255478"/>
+				<textElement>
+					<font fontName="Arial Black" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERVICIO DE RECUPERACIÓN DE DATOS]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="4" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
